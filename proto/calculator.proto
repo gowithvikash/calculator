@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package calculator ;
+
+option go_package = "github.com/gowithvikash/grpc_with_go/calculator/proto";
+
+
+// to find sum of given to number
+message SumRequest {
+    int64 first_number = 1;
+    int64 second_number = 2;
+}
+message SumResponse {
+    int64 result = 1;
+}
+
+// to find primes of a given number
+message PrimesRequest {
+    int64 number = 1;
+}
+message PrimesResponse {
+    int64 result = 1;
+}
+
+// to find average of given numbers
+message AverageRequest {
+    int64 number = 1;
+}
+message AverageResponse {
+    double result = 1;
+}
+
+// to find big number from given numbers
+message MaximumRequest {
+    int64 number = 1;
+}
+message MaximumResponse {
+    int64 result = 1;
+}
+
+
+// to find square root of a number 
+message SqrtRequest {
+    int64 number = 1;   // here we can also use uint for restrict of negative number
+}
+message SqrtResponse {
+    double result = 1;
+}
+
+
+service CalculatorService {
+    rpc Sum (SumRequest) returns (SumResponse);
+    rpc Primes (PrimesRequest) returns (stream PrimesResponse);
+    rpc Average (stream AverageRequest) returns (AverageResponse);
+    rpc Maximum (stream MaximumRequest) returns (stream MaximumResponse);
+    rpc SquareRoot (SqrtRequest) returns (SqrtResponse);
+}
+
+// protoc -Iproto --go_opt=module=github.com/gowithvikash/grpc_with_go/calculator/proto --go-grpc_opt=module=github.com/gowithvikash/grpc_with_go/calculator/proto --go_out=proto/. --go-grpc_out=proto/. proto/calculator.proto
