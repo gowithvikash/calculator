@@ -18,7 +18,7 @@ Client---|                                |---Server
                       
                       
                    
-# Primes (This Type Of Api's Called Server Streaming Api's)
+# Primes ( This Type Of Api's Called Server Streaming Api's , In Which Server Will Send A Stream And Client Will Recieve It )
 
 
    in these api endpoint we will just send a single request to server and server will send multiple response back to client
@@ -36,7 +36,7 @@ Client---|                                |---Server
                      Step : 02
                    
                    
-# Average (This Type Of Api's Called Client Straming Api's)
+# Average (This Type Of Api's Called Client Straming Api's , In Which Client Will Send A Stream And Server Will Recieve It )
 in these type of api endpoints we will send multiple requests to server and server will a send a single response back to client
    
 sending multiple request to server --->>> Then <<< Getting Single Response From Server
@@ -56,7 +56,7 @@ Client---|                                   |---Server
                      
                      
                      
-# Maximum
+# Maximum ( This Type Of Api's Called Bi_Directional Api's In Which Both Client And Server Will Send And Recieve Stream's Of Each Other )
 (This Type Of Api's Called Client Straming Api's)
  
 in these type of api endpoints we will just send multiple requests to server and server will send multiple response back to client simenteneously (req/resp)
