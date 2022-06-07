@@ -9,11 +9,16 @@ in these 2  api's endpoint we will just send a single request to server and serv
    
 like ---sending one request to server --->>> Then <<< Getting A Single Response From Server
 
-                      Step : 01
-           --->->--- Request 01 -->-->--- 
-Client---|                                |---Server
-           ---<-<--- Response 02 --<--<---    
-                      Step : 02
+               >>>>    Sending To Server >>>>
+               
+               
+               --->->--- Request 01 -->-->--- 
+    Client---|                                |---Server
+               ---<-<--- Response 02 --<--<---    
+                     
+                     
+               <<<< Recieving From Server <<<<
+
                       
                       
                       
@@ -26,14 +31,18 @@ Client---|                                |---Server
    like ---sending one request to server --->>> Then <<< Getting Multiple Responses From Server
    
    
-                   Step : 01
-             --->->---Request-->-->--- 
-Client---|                                |---Server
-           ---<-<---Response 01 --<--<--- 
-           ---<-<---Response 02 --<--<--- 
-           ---<-<---Response 03 --<--<--- 
-           ---<-<---Response 04 --<--<--- 
-                     Step : 02
+                 
+              >>>>    Sending To Server >>>>
+                       
+                 --->->---Request-->-->--- 
+   Client---|                                |---Server
+              ---<-<---Response 01 --<--<--- 
+              ---<-<---Response 02 --<--<--- 
+              ---<-<---Response 03 --<--<--- 
+              ---<-<---Response 04 --<--<--- 
+              
+             <<<< Recieving From Server <<<<
+
                    
                    
 # Average (This Type Of Api's Called Client Straming Api's , In Which Client Will Send A Stream And Server Will Recieve It )
@@ -43,16 +52,17 @@ sending multiple request to server --->>> Then <<< Getting Single Response From 
 
 
 
-                       Step : 01
+                  >>>>    Sending To Server >>>>
                        
-             --->->---Request 01 -->-->---
-             --->->---Request 02 -->-->---
-             --->->---Request 03 -->-->---
-             --->->---Request 04 -->-->---
-Client---|                                   |---Server
-             ---<-<---Response 01 --<--<--- 
+                  --->->---Request 01 -->-->---
+                  --->->---Request 02 -->-->---
+                  --->->---Request 03 -->-->---
+                  --->->---Request 04 -->-->---
+     Client---|                                   |---Server
+                  ---<-<---Response 01 --<--<--- 
            
-                       Step : 02
+                 <<<< Recieving From Server <<<<
+
                      
                      
                      
@@ -63,7 +73,7 @@ in these type of api endpoints we will just send multiple requests to server and
    
 sending multiple request to server --->>> Then <<< Getting Multiple Responses From Server simenteneously
                       
-                      Step : 01
+             >>>>    Sending To Server >>>>
                       
              --->->---Request 01 -->-->---
              --->->---Request 02 -->-->---
@@ -76,5 +86,5 @@ Client---|          simenteneously            |---Server
              ---<-<---Response 04 --<--<--- 
                       
                       
-                      Step : 02
+            <<<< Recieving From Server <<<<
                    
