@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"math"
 	"net"
@@ -60,11 +61,45 @@ func (s *Server) Primes(in *pb.PrimesRequest, stream pb.CalculatorService_Primes
 }
 func (s *Server) Average(stream pb.CalculatorService_AverageServer) error {
 	fmt.Println("______     Average Function Was Invoked At Server     _____")
-	return nil
+	var total = 0
+	var count = 0
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			return stream.SendAndClose(&pb.AverageResponse{
+				Result: float64(total) / float64(count),
+			})
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+		total += int(req.Number)
+		count++
+	}
 }
+
 func (s *Server) Maximum(stream pb.CalculatorService_MaximumServer) error {
 	fmt.Println("______     Maximum Function Was Invoked At Server     _____")
-	return nil
+	var max = 0
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+		if req.Number > int64(max) {
+			err = stream.Send(&pb.MaximumResponse{
+				Result: req.Number,
+			})
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		max = int(req.Number)
+
+	}
 }
 func (s *Server) SquareRoot(ctx context.Context, in *pb.SqrtRequest) (*pb.SqrtResponse, error) {
 	fmt.Println("______     SquareRoot Function Was Invoked At Server     _____")
